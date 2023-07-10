@@ -4,6 +4,7 @@ import com.example.tpvendredi_07_07.dto.Comment.CommentDto;
 import com.example.tpvendredi_07_07.entity.Comment;
 import com.example.tpvendredi_07_07.exception.NotFounfException;
 import com.example.tpvendredi_07_07.service.CommentService;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,7 +20,7 @@ public class CommentController {
     private CommentService commentService;
 
     @PostMapping("/add")
-    public ResponseEntity<Comment> createComment(@RequestBody CommentDto commentDto) throws NotFounfException {
+    public ResponseEntity<Comment> createComment(@RequestBody @Valid CommentDto commentDto) throws NotFounfException {
         return new ResponseEntity<>(commentService.create(commentDto), HttpStatus.OK);
     }
 

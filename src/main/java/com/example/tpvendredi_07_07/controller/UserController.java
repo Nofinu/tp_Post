@@ -9,6 +9,7 @@ import com.example.tpvendredi_07_07.exception.AlreadyExistExeption;
 import com.example.tpvendredi_07_07.exception.NotFounfException;
 import com.example.tpvendredi_07_07.service.PostService;
 import com.example.tpvendredi_07_07.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/add")
-    public ResponseEntity<UserDto> createUser (@RequestBody UserCreateDto userCreateDto) throws NotFounfException, AlreadyExistExeption {
+    public ResponseEntity<UserDto> createUser (@RequestBody @Valid UserCreateDto userCreateDto) throws NotFounfException, AlreadyExistExeption {
         return new ResponseEntity<>(userService.create(userCreateDto), HttpStatus.OK);
     }
 

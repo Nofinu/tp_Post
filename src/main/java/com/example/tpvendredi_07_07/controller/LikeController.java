@@ -5,6 +5,7 @@ import com.example.tpvendredi_07_07.entity.Comment;
 import com.example.tpvendredi_07_07.entity.Like;
 import com.example.tpvendredi_07_07.exception.NotFounfException;
 import com.example.tpvendredi_07_07.service.LikeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class LikeController {
     private LikeService likeService;
 
     @PostMapping("/add")
-    public ResponseEntity<Like> createLike (@RequestBody LikeCreateDto likeCreateDto) throws NotFounfException {
+    public ResponseEntity<Like> createLike (@RequestBody @Valid LikeCreateDto likeCreateDto) throws NotFounfException {
         return new ResponseEntity<>(likeService.create(likeCreateDto), HttpStatus.OK);
     }
 

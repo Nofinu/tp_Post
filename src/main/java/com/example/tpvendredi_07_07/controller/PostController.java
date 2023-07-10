@@ -4,6 +4,7 @@ import com.example.tpvendredi_07_07.dto.Post.PostDto;
 import com.example.tpvendredi_07_07.entity.Post;
 import com.example.tpvendredi_07_07.exception.NotFounfException;
 import com.example.tpvendredi_07_07.service.PostService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class PostController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Post> createPost (@RequestBody PostDto postDto) throws NotFounfException {
+    public ResponseEntity<Post> createPost (@RequestBody @Valid PostDto postDto) throws NotFounfException {
         return new ResponseEntity<>(postService.create(postDto), HttpStatus.OK);
     }
 

@@ -4,6 +4,7 @@ import com.example.tpvendredi_07_07.dto.Dislike.DislikeCreateDto;
 import com.example.tpvendredi_07_07.entity.Dislike;
 import com.example.tpvendredi_07_07.exception.NotFounfException;
 import com.example.tpvendredi_07_07.service.DislikeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class DislikeController {
     private DislikeService dislikeService;
 
     @PostMapping("/add")
-    public ResponseEntity<Dislike> createDislike (@RequestBody DislikeCreateDto dislikeCreateDto) throws NotFounfException {
+    public ResponseEntity<Dislike> createDislike (@RequestBody @Valid DislikeCreateDto dislikeCreateDto) throws NotFounfException {
         return new ResponseEntity<>(dislikeService.create(dislikeCreateDto), HttpStatus.OK);
     }
 
