@@ -27,4 +27,12 @@ public class LikeController {
     public ResponseEntity<List<Like>> findByComment (@PathVariable int id) throws NotFounfException {
         return new ResponseEntity<>(likeService.findByComment(id),HttpStatus.OK);
     }
+
+    @GetMapping("/delete/{id}")
+    public ResponseEntity<String> deleteLike (@PathVariable Integer id) throws NotFounfException {
+        if(likeService.delete(id)){
+            return new ResponseEntity<>("Like delete",HttpStatus.OK);
+        }
+        return new ResponseEntity<>("error during delete",HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

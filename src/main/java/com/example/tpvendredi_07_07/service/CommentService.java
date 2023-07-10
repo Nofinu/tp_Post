@@ -25,6 +25,11 @@ public class CommentService {
         return commentRepository.save(commentDtoToComment.convert(comment));
     }
 
+    public Boolean delete (int id) throws NotFounfException {
+        commentRepository.delete(findById(id));
+        return true;
+    }
+
     public List<Comment> findByPost(int postId) throws NotFounfException {
         Post post = postService.findById(postId);
         return commentRepository.findByPost(post);

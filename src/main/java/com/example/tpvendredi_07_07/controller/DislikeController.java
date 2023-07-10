@@ -26,4 +26,12 @@ public class DislikeController {
     public ResponseEntity<List<Dislike>> findByComment (@PathVariable Integer id) throws NotFounfException {
         return new ResponseEntity<>(dislikeService.findByComment(id),HttpStatus.OK);
     }
+
+    @GetMapping("/delete/{id}")
+    public ResponseEntity<String> deleteDislike (@PathVariable Integer id) throws NotFounfException {
+        if(dislikeService.delete(id)){
+            return new ResponseEntity<>("dislike delete",HttpStatus.OK);
+        }
+        return new ResponseEntity<>("error during delete",HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

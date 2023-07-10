@@ -27,4 +27,12 @@ public class CommentController {
     public ResponseEntity<List<Comment>> findByPost (@PathVariable Integer id) throws NotFounfException {
         return new ResponseEntity<>(commentService.findByPost(id),HttpStatus.OK);
     }
+
+    @GetMapping("/delete/{id}")
+    public ResponseEntity<String> deleteComment (@PathVariable Integer id) throws NotFounfException {
+        if(commentService.delete(id)){
+            return new ResponseEntity<>("comment delete",HttpStatus.OK);
+        }
+        return new ResponseEntity<>("error during delete",HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

@@ -22,6 +22,11 @@ public class PostService {
         return postRepository.save(postDtoToPost.convert(postDto));
     }
 
+    public Boolean delete (int id) throws NotFounfException {
+        postRepository.delete(findById(id));
+        return true;
+    }
+
     public Post findById(int id) throws NotFounfException {
         Optional<Post> post = postRepository.findById(id);
         if(post.isPresent()){

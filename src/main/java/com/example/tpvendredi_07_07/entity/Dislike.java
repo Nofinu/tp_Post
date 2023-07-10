@@ -20,9 +20,9 @@ public class Dislike {
 
     private LocalDate date;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Comment comment;
 }

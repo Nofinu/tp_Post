@@ -28,6 +28,19 @@ public class LikeService {
         return likeRepository.save(like);
     }
 
+    public Boolean delete (int id) throws NotFounfException {
+        likeRepository.delete(findById(id));
+        return true;
+    }
+
+    public Like findById(int id) throws NotFounfException {
+        Optional<Like> like = likeRepository.findById(id);
+        if(like.isPresent()){
+            return like.get();
+        }
+        throw new NotFounfException();
+    }
+
     public List<Like> findByComment (int idComment) throws NotFounfException {
         Comment comment = commentService.findById(idComment);
         return likeRepository.findByComment(comment);

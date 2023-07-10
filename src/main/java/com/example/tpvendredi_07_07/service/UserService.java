@@ -31,6 +31,11 @@ public class UserService {
     throw new AlreadyExistExeption();
     }
 
+    public Boolean delete (int id) throws NotFounfException {
+        userRepository.delete(findById(id));
+        return true;
+    }
+
     public User findById(int id) throws NotFounfException {
         Optional<User> user = userRepository.findById(id);
         if(user.isPresent()){
