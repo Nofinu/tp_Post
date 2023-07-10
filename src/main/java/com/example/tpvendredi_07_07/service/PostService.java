@@ -9,6 +9,7 @@ import com.example.tpvendredi_07_07.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -33,5 +34,9 @@ public class PostService {
             return post.get();
         }
         throw new NotFounfException();
+    }
+
+    public List<Post> findAll(){
+        return (List<Post>) postRepository.findAll();
     }
 }
