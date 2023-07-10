@@ -11,6 +11,7 @@ import com.example.tpvendredi_07_07.repository.LikeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,10 +20,17 @@ public class LikeService {
     private LikeRepository likeRepository;
     @Autowired
     private LikeDtoToLike likeDtoToLike;
+    @Autowired
+    private CommentService commentService;
 
     public Like create (LikeCreateDto likeCreateDto) throws NotFounfException {
         Like like = likeDtoToLike.convert(likeCreateDto);
         return likeRepository.save(like);
+    }
+
+    public List<Like> findByComment (int idComment) throws NotFounfException {
+        Comment comment = commentService.findById(idComment);
+        return likeRepository.findByComment(comment);
     }
 
 
