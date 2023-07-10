@@ -22,7 +22,7 @@ public class UserService {
     @Autowired
     private DtoUtils dtoUtils;
 
-    public UserDto create (UserCreateDto userCreateDto) throws NotFounfException, AlreadyExistExeption {
+    public UserDto create(UserCreateDto userCreateDto) throws NotFounfException, AlreadyExistExeption {
         if(userRepository.findByUsername(userCreateDto.getUsername()) == null){
             User user = userCreateDto.getId() != null ? findById(userCreateDto.getId()) : new User();
             user = userRepository.save(dtoUtils.UserconvertToEntity(user,userCreateDto));

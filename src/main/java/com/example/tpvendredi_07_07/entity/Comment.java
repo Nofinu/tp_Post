@@ -1,9 +1,6 @@
 package com.example.tpvendredi_07_07.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -22,8 +19,8 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotNull(message = "invalide message, message null")
-    @NotEmpty(message = "invalide message, message empty")
-    @Max(value = 500, message = "invalide message, title too long max 500")
     private String message;
+
+    @ManyToOne
+    private Post post;
 }

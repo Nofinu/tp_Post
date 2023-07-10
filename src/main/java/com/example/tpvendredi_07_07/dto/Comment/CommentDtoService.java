@@ -1,7 +1,5 @@
-package com.example.tpvendredi_07_07.service;
+package com.example.tpvendredi_07_07.dto.Comment;
 
-import com.example.tpvendredi_07_07.dto.Comment.CommentDto;
-import com.example.tpvendredi_07_07.dto.Comment.CommentDtoToComment;
 import com.example.tpvendredi_07_07.entity.Comment;
 import com.example.tpvendredi_07_07.exception.NotFounfException;
 import com.example.tpvendredi_07_07.repository.CommentRepository;
@@ -11,15 +9,9 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class CommentService {
+public class CommentDtoService {
     @Autowired
     private CommentRepository commentRepository;
-    @Autowired
-    private CommentDtoToComment commentDtoToComment;
-
-    public Comment create (CommentDto comment) throws NotFounfException {
-        return commentRepository.save(commentDtoToComment.convert(comment));
-    }
 
     public Comment findById(int id) throws NotFounfException {
         Optional<Comment> comment = commentRepository.findById(id);

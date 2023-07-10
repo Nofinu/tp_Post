@@ -21,15 +21,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull(message = "invalide title, title null")
-    @NotEmpty(message = "invalide title, title empty")
-    @Max(value = 15, message = "invalide title, title too long max 15")
     private String title;
-    @NotNull(message = "invalide content, content null")
-    @NotEmpty(message = "invalide content, content empty")
-    @Max(value = 250, message = "invalide content, title too long max 250")
     private String content;
 
-    @ManyToMany
-    private List<Comment> comment;
 }

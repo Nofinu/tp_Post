@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class DislikeCreateDto {
     private Integer id;
 
-    @Pattern(regexp = "^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d\\d$",message = "Invalide Date : date must be dd-MM-yyyy")
+    @Pattern(regexp = "^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$",message = "Invalide Date : date must be yyyy-MM-dd")
     private String date;
 
     @NotNull(message = "Invalide user : user null")
